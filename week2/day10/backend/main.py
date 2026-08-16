@@ -84,7 +84,7 @@ Profile_schema = Profile.model_json_schema()
 
 # Part 2 -- Read text form pdf and convert it into string
 
-file_path = Path("../Profile.pdf")
+file_path = Path(__file__).resolve().parent / "Profile.pdf"
 
 def read_pdf(file_path):
     reader = PdfReader(file_path)
