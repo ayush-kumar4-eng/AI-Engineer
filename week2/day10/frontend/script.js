@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000/chat";
+const API_URL = "https://ayushai-atvj.onrender.com/chat";
 
 const chatArea = document.querySelector(".chat-area");
 const composer = document.querySelector(".composer");
