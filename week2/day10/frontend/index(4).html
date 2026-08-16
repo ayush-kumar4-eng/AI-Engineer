@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AyushAI — Personal Portfolio AI Assistant">
+    <title>AyushAI — Personal Portfolio Assistant</title>
+    <link rel="stylesheet" href="style(4).css">
+</head>
+
+<body>
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">A</div>
+                <div>
+                    <h1>AyushAI</h1>
+                    <p>Personal Portfolio AI</p>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-image-wrapper">
+                    <img
+                        src="photo.jpg"
+                        alt="Ayush Kumar"
+                        class="profile-image"
+                    >
+                    <span class="online-dot"></span>
+                </div>
+
+                <h2>Ayush Kumar</h2>
+                <p class="profile-role">B.Tech IT · KIET</p>
+
+                <div class="profile-tag">
+                    <span></span>
+                    Technology with Purpose.
+                </div>
+
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/ayush-kumar4-eng" target="_blank">GitHub</a>
+                    <a href="https://ayushkumarkiet-portfolio.netlify.app/" target="_blank">Portfolio</a>
+                </div>
+            </div>
+
+            <div class="sidebar-block">
+                <div class="block-heading">
+                    <span>Core Skills</span>
+                    <small>13 SKILLS</small>
+                </div>
+
+                <div class="skills">
+                    <span>Python</span>
+                    <span>C++</span>
+                    <span>JavaScript</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>Generative AI</span>
+                    <span>MongoDB</span>
+                    <span>AI Agents</span>
+                    <span>Git</span>
+                    <span>GitHub</span>
+                    <span>Canva</span>
+                    <span>Figma</span>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Chat -->
+        <main class="main">
+
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">PERSONAL KNOWLEDGE ASSISTANT</p>
+                    <h2>Ask about <span>Ayush.</span></h2>
+                </div>
+
+                <div class="ai-status">
+                    <span class="status-light"></span>
+                    AI Online
+                </div>
+            </header>
+
+
+            <section class="chat-area">
+
+                <div class="hero">
+                    <div class="hero-badge">
+                        <span>✦</span>
+                        AYUSHAI
+                    </div>
+
+                    <h3>
+                        Meet Ayush's<br>
+                        <span>AI twin.</span>
+                    </h3>
+
+                    <p>
+                        Ask questions about Ayush's education, technical
+                        skills, certifications, projects, experience and
+                        professional journey.
+                    </p>
+                </div>
+
+                <!-- Initial AI Message -->
+                <div class="message ai-message">
+
+                    <div class="message-avatar">A</div>
+
+                    <div class="message-body">
+                        <div class="message-name">AYUSHAI</div>
+
+                        <p>
+                            Hi! I'm AyushAI, Ayush Kumar's personal portfolio
+                            assistant. I can answer questions using his
+                            structured profile information.
+                        </p>
+
+                        <div class="example-question">
+                            Try asking:
+                            <span>"What are Ayush's AI skills?"</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Composer -->
+            <footer class="composer-area">
+
+                <form class="composer">
+
+                    <div class="input-icon">✦</div>
+
+                    <input
+                        type="text"
+                        placeholder="Ask AyushAI anything..."
+                        autocomplete="off"
+                    >
+
+                    <button type="submit">
+                        <span>Ask</span>
+                        <b>↗</b>
+                    </button>
+
+                </form>
+
+                <div class="composer-footer">
+                    <span>AyushAI</span>
+                    <span>Answers grounded in Ayush's profile data</span>
+                    <span>•</span>
+                    <span>FastAPI + Groq</span>
+                </div>
+
+            </footer>
+
+        </main>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
