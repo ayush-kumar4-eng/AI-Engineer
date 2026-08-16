@@ -26,6 +26,18 @@
     box-sizing: border-box;
 }
 
+ul, ol {
+    margin-left: 1.5em;
+    padding-left: 1.5em;
+}
+
+li {
+    margin-bottom: 0.5em;
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -110,7 +122,7 @@ body {
     margin-top: 2px;
 
     color: var(--muted);
-    font-size: 10px;
+    font-size: 11px;
 }
 
 
@@ -159,7 +171,7 @@ body {
     margin-top: 5px;
 
     color: var(--text-soft);
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .profile-tag {
@@ -170,7 +182,7 @@ body {
     gap: 6px;
 
     color: var(--purple-dark);
-    font-size: 10px;
+    font-size: 11px;
 }
 
 .profile-tag span {
@@ -232,7 +244,7 @@ body {
 
     color: var(--text-soft);
 
-    font: 600 12px "Space Grotesk";
+    font: 600 13px "Space Grotesk";
 }
 
 .block-heading small {
@@ -296,7 +308,7 @@ body {
 
 .sidebar-footer span {
     color: #686e7b;
-    font-size: 8px;
+    font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 0.8px;
 }
@@ -336,7 +348,7 @@ body {
 .eyebrow {
     color: #68627d;
 
-    font-size: 8px;
+    font-size: 9px;
     font-weight: 700;
 
     letter-spacing: 2px;
@@ -413,13 +425,13 @@ body {
 
     background: var(--bg-light);
 
-    font-size: 8px;
+    font-size: 9px;
     font-weight: 700;
     letter-spacing: 1.6px;
 }
 
 .hero-badge span {
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .hero h3 {
@@ -516,13 +528,13 @@ body {
 
     color: var(--muted);
 
-    font-size: 9px;
+    font-size: 12px;
 }
 
 .suggestion-card > b {
     color: #626875;
 
-    font-size: 14px;
+    font-size: 15px;
 }
 
 
@@ -563,6 +575,8 @@ body {
     border-radius: 4px 15px 15px 15px;
 
     background: var(--bg-light);
+
+    margin-left: 5px;
 }
 
 .message-name {
@@ -575,11 +589,23 @@ body {
     letter-spacing: 1.2px;
 }
 
-.message-body p {
+.message-body p{
     color: var(--text);
 
     font-size: 13px;
     line-height: 1.7;
+}
+
+.message-body li{
+    color: var(--text);
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+li::marker{
+    color: var(--purple-dark);
+    padding-left: 5px;
 }
 
 .user-message {
@@ -697,7 +723,7 @@ body {
 
     color: #77718d;
 
-    font-size: 8px;
+    font-size: 9px;
 }
 
 .composer-footer span:first-child {

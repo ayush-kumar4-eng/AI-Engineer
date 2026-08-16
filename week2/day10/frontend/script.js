@@ -209,18 +209,15 @@ function addAIMessage(text) {
 
     message.className = "message ai-message";
 
-
     const avatar = document.createElement("div");
 
     avatar.className = "message-avatar";
 
     avatar.textContent = "A";
 
-
     const body = document.createElement("div");
 
     body.className = "message-body";
-
 
     const name = document.createElement("div");
 
@@ -228,29 +225,23 @@ function addAIMessage(text) {
 
     name.textContent = "AYUSHAI";
 
+    const paragraph = document.createElement("div");
 
-    const paragraph = document.createElement("p");
+    paragraph.className = "ai-content";
 
-    paragraph.textContent = text;
-
+    paragraph.innerHTML = marked.parse(text);
 
     body.appendChild(name);
-
     body.appendChild(paragraph);
 
-
     message.appendChild(avatar);
-
     message.appendChild(body);
 
-
     chatArea.appendChild(message);
-
 
     scrollToBottom();
 
     return message;
-
 }
 
 
@@ -264,18 +255,15 @@ async function typeAIMessage(text) {
 
     message.className = "message ai-message";
 
-
     const avatar = document.createElement("div");
 
     avatar.className = "message-avatar";
 
     avatar.textContent = "A";
 
-
     const body = document.createElement("div");
 
     body.className = "message-body";
-
 
     const name = document.createElement("div");
 
@@ -283,34 +271,21 @@ async function typeAIMessage(text) {
 
     name.textContent = "AYUSHAI";
 
+    const content = document.createElement("div");
 
-    const paragraph = document.createElement("p");
+    content.className = "ai-content";
 
+    content.innerHTML = marked.parse(text);
 
     body.appendChild(name);
-
-    body.appendChild(paragraph);
-
+    body.appendChild(content);
 
     message.appendChild(avatar);
-
     message.appendChild(body);
-
 
     chatArea.appendChild(message);
 
-
-    // Character-by-character typing
-    for (let i = 0; i < text.length; i++) {
-
-        paragraph.textContent += text[i];
-
-        scrollToBottom();
-
-        await sleep(12);
-
-    }
-
+    scrollToBottom();
 }
 
 
