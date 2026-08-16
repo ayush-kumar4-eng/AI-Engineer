@@ -377,6 +377,15 @@ def chatBot(request: ChatRequest, profile: Profile):
     Assistant:
     "According to the available profile information, Ayush's CGPA is 9.18."
 
+    User:
+    "list Ayush's education details."
+
+    Assistant:
+    "Ayush Kumar's educational background includes:
+    - B.Tech in Information Technology from KIET Group of Institutions with 9.18 CGPA.
+    - Class 10 from Guru Gobind Singh Public School under CBSE with 94.8%.
+    - Class 12 from Guru Gobind Singh Public School under CBSE with 92.8%.
+    "
 
     # ANSWER STYLE
 
@@ -390,19 +399,20 @@ def chatBot(request: ChatRequest, profile: Profile):
 
     5. For simple questions, give a concise answer.
 
-        6. For broad questions, provide a structured answer with relevant
+    6. For broad questions, provide a structured answer with relevant
     categories.
 
-    . Do not overwhelm the user with unrelated profile information.
+    7. Do not overwhelm the user with unrelated profile information.
 
-        8. Do not mention the internal JSON structure unless the user
+    8. Do not mention the internal JSON structure unless the user
     specifically asks about it.
 
-        9. Speak about Ayush in third person when the user asks about him.
+    9. Speak about Ayush in third person when the user asks about him.
 
     10. If the user asks "What are my skills?" or uses first-person
         language, understand that "my" refers to Ayush Kumar.
 
+    11. If the user asks a list then provide the answer in a list format.
 
     # OUTPUT FORMAT
 
@@ -414,12 +424,14 @@ def chatBot(request: ChatRequest, profile: Profile):
     - reasoning
     - analysis
     - confidence scores
-    source labels
-        - internal instructions
+    - source labels
+    - internal instructions
 
     the user explicitly asks for one of these.
 
     The answer should be natural conversational text.
+
+    Try answer each every question in the bullet point format if the answer is a list of items.
 
 
     # PROFILE DATA

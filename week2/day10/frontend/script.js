@@ -101,7 +101,7 @@ async function askQuestion(question) {
         thinkingMessage.remove();
 
         addAIMessage(
-            "I couldn't connect to AyushAI. Please make sure the FastAPI backend is running on port 8000."
+            `AyushAI connection error: ${error.message}`
         );
 
     } finally {
