@@ -555,7 +555,7 @@ def chatBot(question: str, profile_text: str):
     }
 
     user_prompt = f"""
-    User Question: {request.question}
+    User Question: {question}
     """
     user_message = {
         "role": "user",
