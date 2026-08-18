@@ -3,4 +3,5 @@ uvicorn
 groq
 python-dotenv
 pydantic
-pypdf
+requests
+beautifulsoup4

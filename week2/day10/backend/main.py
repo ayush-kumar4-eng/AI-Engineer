@@ -84,20 +84,115 @@ Profile_schema = Profile.model_json_schema()
 
 # Part 2 -- Read text form pdf and convert it into string
 
-file_path = Path(__file__).resolve().parent / "Profile.pdf"
+import time
+import requests
+from bs4 import BeautifulSoup
 
-def read_pdf(file_path):
-    reader = PdfReader(file_path)
-    text = ""
-    for page in reader.pages:
-        page_text = page.extract_text()
-        if page_text:
-            text += page_text
-    return text
 
-# pdf_text = read_pdf(file_path)
+# =========================================================
+# Google Docs URL
+# =========================================================
 
-def parsed_profile(pdf_text, Profile_schema):
+PROFILE_DOC_URL = os.getenv("PROFILE_DOC_URL")
+
+if not PROFILE_DOC_URL:
+    raise ValueError("PROFILE_DOC_URL not found")
+
+
+# =========================================================
+# Profile Cache
+# =========================================================
+
+PROFILE_CACHE = None
+PROFILE_CACHE_TIME = 0
+
+# Cache duration = 5 minutes
+CACHE_DURATION = 300
+
+
+# =========================================================
+# Fetch Profile from Google Docs
+# =========================================================
+
+def fetch_google_doc():
+
+    print("Fetching profile from Google Docs...")
+
+    response = requests.get(
+        PROFILE_DOC_URL,
+        timeout=15
+    )
+
+    response.raise_for_status()
+
+    soup = BeautifulSoup(
+        response.text,
+        "html.parser"
+    )
+
+    text = soup.get_text("\n")
+
+    # Remove unnecessary blank lines
+    lines = []
+
+    for line in text.splitlines():
+
+        line = line.strip()
+
+        if line:
+            lines.append(line)
+
+    profile_text = "\n".join(lines)
+
+    if not profile_text:
+        raise ValueError(
+            "Google Doc returned empty content"
+        )
+
+    print("Google Doc fetched successfully")
+
+    return profile_text
+
+
+# =========================================================
+# Get Profile with Cache
+# =========================================================
+
+def get_profile_text():
+
+    global PROFILE_CACHE
+    global PROFILE_CACHE_TIME
+
+    current_time = time.time()
+
+    # Check if cached profile is still valid
+    if (
+        PROFILE_CACHE is not None
+        and
+        current_time - PROFILE_CACHE_TIME < CACHE_DURATION
+    ):
+
+        print("Using cached profile")
+
+        return PROFILE_CACHE
+
+
+    # Cache expired or does not exist
+    print("Cache expired. Fetching fresh profile...")
+
+    profile_text = fetch_google_doc()
+
+
+    # Update cache
+    PROFILE_CACHE = profile_text
+    PROFILE_CACHE_TIME = current_time
+
+    print("Profile cache updated")
+
+    return PROFILE_CACHE
+
+
+def parsed_profile(profile_text, Profile_schema):
 
     system_prompt = f"""
 
@@ -133,7 +228,7 @@ def parsed_profile(pdf_text, Profile_schema):
     """
 
     User_prompt = f"""
-    Parse the given Profile text. {pdf_text}
+    Parse the given Profile text. {profile_text}
     """
 
     message_system ={
@@ -483,8 +578,8 @@ def home():
 
 @app.post("/chat")
 def chat(request: ChatRequest):
-    pdf_text = read_pdf(file_path)
-    profile = parsed_profile(pdf_text, Profile_schema)
+    profile_text = get_profile_text()
+    profile = parsed_profile(profile_text,Profile_schema)
     answer = chatBot(request, profile)
     return {
         "answer": answer

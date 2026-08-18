@@ -1,5 +1,5 @@
 [project]
-name = "day10"
+name = "day13"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -7,19 +7,10 @@ authors = [
     { name = "[ayush_kumar4_eng]", email = "[ayush56789.kumar2@gmail.com]" }
 ]
 requires-python = ">=3.13"
-dependencies = [
-    "bs4>=0.0.2",
-    "fastapi>=0.141.1",
-    "groq>=1.6.0",
-    "pydantic>=2.13.4",
-    "pypdf>=6.16.1",
-    "python-dotenv>=1.2.2",
-    "requests>=2.34.2",
-    "uvicorn>=0.52.3",
-]
+dependencies = []
 
 [project.scripts]
-day10 = "day10:main"
+day13 = "day13:main"
 
 [build-system]
 requires = ["uv_build>=0.12.1,<0.13.0"]
