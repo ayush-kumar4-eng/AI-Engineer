@@ -27,7 +27,7 @@ if not my_api:
 
 client = Groq(api_key = my_api)                        
 
-model = "openai/gpt-oss-safeguard-20b"  
+model = "llama-3.1-8b-instant"  
 
 #Part 1 -- Class making for personal informations 
 
@@ -264,7 +264,7 @@ def parsed_profile(profile_text, Profile_schema):
 class ChatRequest(BaseModel):
     question: str
 
-def chatBot(request: ChatRequest, profile: Profile):
+def chatBot(question: str, profile_text: str):
     system_prompt = f"""
     # ROLE
 
@@ -534,7 +534,7 @@ def chatBot(request: ChatRequest, profile: Profile):
     The following JSON contains the structured profile information
     a   bout Ayush Kumar.
 
-    {profile.model_dump_json(indent=2)}
+    {profile_text}
 
 
     # FINAL RULE
@@ -548,6 +548,7 @@ def chatBot(request: ChatRequest, profile: Profile):
     5. Do not invent missing information.
     6. Produce a clear natural-language answer.
     """
+
     system_message = {
         "role": "system",
         "content": system_prompt
@@ -576,11 +577,25 @@ def home():
         "message": "Hello, World!"
     }
 
+# @app.post("/chat")
+# def chat(request: ChatRequest):
+#     profile_text = get_profile_text()
+#     profile = parsed_profile(profile_text,Profile_schema)
+#     answer = chatBot(request, profile)
+#     return {
+#         "answer": answer
+#     }
+
 @app.post("/chat")
 def chat(request: ChatRequest):
+
     profile_text = get_profile_text()
-    profile = parsed_profile(profile_text,Profile_schema)
-    answer = chatBot(request, profile)
+
+    answer = chatBot(
+        request.question,
+        profile_text
+    )
+
     return {
         "answer": answer
     }
