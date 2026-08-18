@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from pydantic import BaseModel
 import json 
 from fastapi import FastAPI
-from pypdf import PdfReader
+# from pypdf import PdfReader
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
