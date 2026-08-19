@@ -599,3 +599,7 @@ def chat(request: ChatRequest):
     return {
         "answer": answer
     }
+
+    print("PROFILE TEXT:")
+    print(profile_text)
+    print("================")
