@@ -27,7 +27,7 @@ if not my_api:
 
 client = Groq(api_key = my_api)                        
 
-model = "llama-3.3-70b-versatile"  
+model = "openai/gpt-oss-120b"  
 
 #Part 1 -- Class making for personal informations 
 
