@@ -27,7 +27,7 @@ if not my_api:
 
 client = Groq(api_key = my_api)                        
 
-model = "llama-3.1-8b-instant"  
+model = "llama-3.3-70b-versatile"  
 
 #Part 1 -- Class making for personal informations 
 
