@@ -215,7 +215,7 @@ def parsed_profile(profile_text, Profile_schema):
 
     Return ONLY valid JSON matching this schema:
 
-    {Profile_schema}
+    {json.dumps(Profile_schema, indent=2)}
 
     Important rules:
 
@@ -264,7 +264,7 @@ def parsed_profile(profile_text, Profile_schema):
 class ChatRequest(BaseModel):
     question: str
 
-def chatBot(question: str, profile_text: str):
+def chatBot(question: str, profile_data: dict):
     system_prompt = f"""
     # ROLE
 
@@ -534,7 +534,7 @@ def chatBot(question: str, profile_text: str):
     The following JSON contains the structured profile information
     a   bout Ayush Kumar.
 
-    {profile_text}
+    {json.dumps(profile_data, indent=2)}
 
 
     # FINAL RULE
@@ -577,29 +577,11 @@ def home():
         "message": "Hello, World!"
     }
 
-# @app.post("/chat")
-# def chat(request: ChatRequest):
-#     profile_text = get_profile_text()
-#     profile = parsed_profile(profile_text,Profile_schema)
-#     answer = chatBot(request, profile)
-#     return {
-#         "answer": answer
-#     }
-
 @app.post("/chat")
 def chat(request: ChatRequest):
-
     profile_text = get_profile_text()
-
-    answer = chatBot(
-        request.question,
-        profile_text
-    )
-
+    profile = parsed_profile(profile_text,Profile_schema)
+    answer = chatBot(request, profile)
     return {
         "answer": answer
     }
-
-    print("PROFILE TEXT:")
-    print(profile_text)
-    print("================")
