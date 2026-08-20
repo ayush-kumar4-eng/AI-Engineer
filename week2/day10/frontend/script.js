@@ -456,9 +456,9 @@ const composer = document.querySelector(".composer");
 
 const input = document.querySelector(".composer input");
 
-const sendButton = document.querySelector(".composer button");
+const sendButton = document.querySelector(".composer button[type=\"submit\"]");
 
-const clearButton = document.querySelector("#clear-chat");
+const clearButton = document.querySelector("#clearChat");
 
 
 // ==========================================
@@ -1076,15 +1076,19 @@ function clearChatHistory() {
     );
 
 
-    // Remove messages from UI
-    chatArea.innerHTML = "";
+    // Remove only conversation messages and keep the welcome message.
+    chatArea.querySelectorAll(".user-message, .ai-message .ai-content").forEach(element => {
+        const message = element.classList.contains("message")
+            ? element
+            : element.closest(".message");
 
+        if (message) {
+            message.remove();
+        }
+    });
 
-    // Optional welcome message
-    addAIMessage(
-        "Hi! I'm **AyushAI**. Ask me anything about Ayush's education, skills, projects, certifications, experience, or achievements.",
-        false
-    );
+    input.value = "";
+    input.focus();
 
 }
 
@@ -1143,3 +1147,4 @@ window.addEventListener(
 
     }
 );
+

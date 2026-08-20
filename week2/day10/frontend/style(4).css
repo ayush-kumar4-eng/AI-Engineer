@@ -819,3 +819,20 @@ li::marker{
         font-size: 11px;
     }
 }
+
+.composer-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.clear-button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #aaa;
+}
+
+.clear-button:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
