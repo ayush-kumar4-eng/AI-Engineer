@@ -1,0 +1,24 @@
+[project]
+name = "day17"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "[ayush_kumar4_eng]", email = "[ayush56789.kumar2@gmail.com]" }
+]
+requires-python = ">=3.13.2"
+dependencies = [
+    "groq>=1.7.0",
+    "numpy>=2.5.3",
+    "pydantic>=2.13.5",
+    "python-dotenv>=1.2.4",
+    "qdrant-client>=1.19.1",
+    "sentence-transformers>=6.1.0",
+]
+
+[project.scripts]
+day17 = "day17:main"
+
+[build-system]
+requires = ["uv_build>=0.12.1,<0.13.0"]
+build-backend = "uv_build"
