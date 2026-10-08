@@ -1,0 +1,20 @@
+[project]
+name = "day19"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "[ayush_kumar4_eng]", email = "[ayush56789.kumar2@gmail.com]" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "langgraph>=1.2.12",
+    "typing>=3.10.0.0",
+]
+
+[project.scripts]
+day19 = "day19:main"
+
+[build-system]
+requires = ["uv_build>=0.12.1,<0.13.0"]
+build-backend = "uv_build"
